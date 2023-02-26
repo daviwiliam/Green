@@ -15,6 +15,7 @@ const User = require('./models/User')
 //Routes
 const toughtsRoutes = require('./routes/toughtsRoutes')
 const authRoutes = require('./routes/authRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 //Controler
 const ToughtController = require('./controllers/ToughtController')
@@ -72,6 +73,7 @@ app.use((req, res, next) => {
 
 app.use('/toughts', toughtsRoutes)
 app.use('/', authRoutes)
+app.use('/user', userRoutes)
 
 app.get('/', ToughtController.showToughts)
 

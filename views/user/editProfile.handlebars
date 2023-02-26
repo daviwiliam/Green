@@ -1,0 +1,38 @@
+<div class="tought-form-container">
+    <a href="/user/profile" />Voltar</a>
+    <h1>Editar informações</h1>
+    <form action="/user/save/edit/{{user.id}}" method="post">
+        <div class="profile-edit">
+            <div class="profile-texts">
+                <div class="form-control">
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" value="{{user.name}}">
+                </div>
+                <div class="form-control">
+                    <label for="bio">Bio</label>
+                    <textarea name="bio" maxlength="255">{{user.bio_profile}}</textarea>
+                </div>
+                <div class="form-control">
+                    <label for="location">Localização</label>
+                    <input type="text" name="location" value="{{user.location_profile}}">
+                </div>
+                <div class="form-control">
+                    <label for="link">Link</label>
+                    <input type="text" name="link" value="{{user.link_profile}}">
+                </div>
+            </div>
+            <div class="profile-pics">
+                <div class="send-pic-profile">
+                    <label class="pics-title" for="pic_cover">Foto perfil</label>
+                    <input type="file" name="pic_profile">
+                </div>
+                <div class="send-pic-profile">
+                    <label class="pics-title" for="pic_cover">Foto Capa</label>
+                    <input type="file" name="pic_cover">
+                </div>
+                </div>
+            </div>
+        </div>
+        <input class="btn edit-profile" type="submit" value="Editar">
+    </form>
+</div>

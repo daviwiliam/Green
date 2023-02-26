@@ -28,13 +28,16 @@
         <a href="/" class="btn clear">Limpar</a>
     </div>
 </div>
-<div class="toughts-container">
+<div class="toughts-container user">
     {{#each toughts}}
-        <figure>
-            <blockquote>
-                "{{this.title}}"
-            </blockquote>
-            <figcaption><span>@{{this.User.name}}</span></figcaption>
-        </figure>
+    <figure>
+        <div class="tought-user">
+            <img src="/img/user.jpg">
+            <a class="profile" href="/user/profile/{{this.UserId}}">@{{this.User.name}}</a>
+        </div>
+        <blockquote>
+            {{this.title}}
+        </blockquote>
+    </figure>
     {{/each}}
 </div>

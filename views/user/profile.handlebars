@@ -1,0 +1,31 @@
+<div class="user-profile">
+    <div class="header-profile">
+        <div class="cover-profile">
+            <img src="/img/cover.jpeg" alt="">
+        </div>
+        <div class="data-profile">
+            <img src="/img/user.jpg">
+            <div class="info-profile">
+                <h1>{{user.name}}</h1>
+                <p>{{user.bio_profile}}</p>
+                <i class="bi bi-geo-alt-fill">{{user.location_profile}}</i>
+                <i class="bi bi-link-45deg"><a href="https://www.{{user.link_profile}}" target="_blank">{{user.link_profile}}</a></i>
+            </div>
+        </div>
+    </div>
+    <div class="body-profile">
+        <div class="toughts-container user">
+            {{#each tought}}
+            <figure>
+                <div class="tought-user">
+                    <img src="/img/user.jpg">
+                    <h3>@{{this.name}}</i></h3>
+                </div>
+                <blockquote>
+                    {{this.Toughts.title}}
+                </blockquote>
+            </figure>
+            {{/each}}
+        </div>
+    </div>
+</div>

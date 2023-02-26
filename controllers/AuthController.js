@@ -1,7 +1,7 @@
 const User = require('../models/User')
 
 const bcrypt = require('bcryptjs')
-const { readdirSync } = require('fs')
+
 
 module.exports = class AuthController {
     static login(req, res) {
@@ -55,6 +55,15 @@ module.exports = class AuthController {
         const checkUserExists = await User.findOne({where: {email: email}})
         if(checkUserExists){
             req.flash('message', 'E-mail já está em uso!')
+            res.render('auth/register')
+
+            return
+        }
+
+        //check if user exists
+        const checkNameExists = await User.findOne({where: {name: name}})
+        if(checkNameExists){
+            req.flash('message', 'Nome já está em uso!')
             res.render('auth/register')
 
             return

@@ -1,0 +1,60 @@
+<div class="user-profile">
+    <div class="header-profile">
+        <div class="cover-profile">
+            <img src="/img/cover.jpeg" alt="">
+        </div>
+        <div class="data-profile">
+            <img src="/img/user.jpg">
+            <div class="info-profile">
+                <div class="name-edit">
+                    <h1>{{user.name}}</i></h1>
+                    <a href="/user/edit/{{user.id}}" class="btn">Editar perfil</a>
+                </div>
+                {{#if user.bio_profile}}
+                <p>{{user.bio_profile}} </p>
+                {{/if}}
+                {{#if user.location_profile}}    
+                <i class="bi bi-geo-alt-fill">{{user.location_profile}}</i>
+                {{/if}}
+                {{#if user.link_profile}}
+                <i class="bi bi-link-45deg"><a href="https://www.{{user.link_profile}}"target="_blank">{{user.link_profile}}</a></i>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="body-profile">
+        <div class="create-tought">
+            <form action="/toughts/make" method="post">
+                <div class="save-tougth">
+                    <input type="text" name="title" class="input-tought" placeholder="Crie seu pensamento aqui">
+                    <input type="submit" class="submit-tougth" value="Criar">
+                </div>
+            </form>
+        </div>
+        <div class="toughts-container user">
+            {{#each tought}}
+            {{#if this.Toughts.id}}
+            <figure>
+                <div class="tought-user">
+                    <img src="/img/user.jpg">
+                    <div class="container-edit-exclude">
+                        <h3>@{{this.name}}</h3>
+                        <div class="icons-tought">
+                            <a href="/toughts/edit/{{this.Toughts.id}}"><i class="bi bi-pencil-fill edit-icon"></i></a>
+                            <form action="/toughts/delete" method="post" class="form-exclude">
+                                <input type="hidden" name="id" value="{{this.Toughts.id}}">
+                                <button type="submit"><i class="bi bi-trash3-fill exclude-icon"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <blockquote>
+                    {{this.Toughts.title}}
+                </blockquote>
+            </figure>
+            {{else}}
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>

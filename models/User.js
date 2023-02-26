@@ -16,7 +16,29 @@ const User = db.define('User', {
     password: {
         type: DataTypes.STRING,
         require: true
+    },
+    pic_profile: {
+        type: DataTypes.BLOB,
+        require: true
+    },
+    pic_cover: {
+        type: DataTypes.BLOB,
+        require: true
+    },
+    bio_profile: {
+        type: DataTypes.STRING,
+        require: true
+    },
+    location_profile: {
+        type: DataTypes.STRING,
+        require: true
+    },
+    link_profile: {
+        type: DataTypes.STRING,
+        require: true
     }
+
+
 })
 
 module.exports = User

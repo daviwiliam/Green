@@ -38,26 +38,6 @@ module.exports = class ToughtController {
         res.render('toughts/home', {toughts, search, toughtsQty})
     }
 
-    static async dashboard(req, res) {
-        const userId = req.session.userid
-
-        const user = await User.findOne({where:{id:userId}, include: Tought, plain:true})
-
-        if(!user){
-            res.redirect('/login')
-        }
-
-        const toughts = user.Toughts.map((result) => result.dataValues)
-
-        let emptyToughts = false
-
-        if(toughts.length === 0){
-            emptyToughts = true
-        }
-
-        res.render('toughts/dashboard', {toughts, emptyToughts})
-    }
-
     static makeTought(req, res) {
         res.render('toughts/make')
     }
@@ -72,10 +52,10 @@ module.exports = class ToughtController {
         try {
             await Tought.create(tought)
 
-            req.flash('message', 'Pensamento criado com sucesso!')
+            req.flash('message', 'Pensamento criado com sucesso')
 
             req.session.save(() => {
-                res.redirect('/toughts/dashboard')
+                res.redirect('/user/profile')
             })
         } catch (err) {
             console.log(err)
@@ -106,10 +86,10 @@ module.exports = class ToughtController {
         try {
             await Tought.update(tought, {where:{id:id}})
 
-            req.flash('message', 'Pensamento editado com sucesso!')
+            req.flash('message', 'Pensamento editado com sucesso')
 
             req.session.save(() => {
-                res.redirect('/toughts/dashboard')
+                res.redirect('/user/profile')
             })
         }catch(err){
             console.log(err)
@@ -117,6 +97,7 @@ module.exports = class ToughtController {
     }
 
     static async deleteTought(req, res) {
+        console.log(req.body)
         const id = req.body.id
 
         const UserId = req.session.userid
@@ -124,10 +105,10 @@ module.exports = class ToughtController {
         try {
             await Tought.destroy({where:{id:id, UserId:UserId}})
 
-            req.flash('message', 'Pensamento excluido com sucesso!')
+            req.flash('message', 'Pensamento excluido com sucesso')
 
             req.session.save(() => {
-                res.redirect('/toughts/dashboard')
+                res.redirect('/user/profile')
             })
         }catch(err){
             console.log(err)

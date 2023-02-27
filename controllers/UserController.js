@@ -19,8 +19,6 @@ module.exports = class UserController {
 
         const tought = await User.findAll({where:{id:userId}, include: Tought, order: [['createdAt', 'DESC']], raw:true, nest: true})
 
-        console.log(tought)
-
         const user = tought[0]
         
         res.render('user/userProfile', {user, tought})
